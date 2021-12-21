@@ -1,26 +1,57 @@
 <template>
-  <a-space class="good" :class="{ word: true }" style="background: green">
-    Space
-    <a-button type="primary">
-      Button
-    </a-button>
-    <a-button type="primary">
-      Button
-    </a-button>
-  </a-space>
+  <div>
+    <a-breadcrumb :routes="routes" :params="params">
+      <!-- <template slot="itemRender" slot-scope="{ route, routes, paths }">
+        <span v-if="routes.indexOf(route) === routes.length - 1">
+          {{ route.breadcrumbName }}
+        </span>
+        <div v-else>
+          {{ route.breadcrumbName }}
+        </div>
+      </template> -->
+    </a-breadcrumb>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      text: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.`,
+      basePath: '/components/breadcrumb',
+      params: {
+        age: 32,
+      },
+      routes: [
+        {
+          path: 'index',
+          breadcrumbName: 'home:age',
+          params: {
+            age: 12,
+          },
+        },
+        {
+          path: 'first',
+          breadcrumbName: 'first',
+          children: [
+            {
+              path: '/general',
+              breadcrumbName: 'General',
+            },
+            {
+              path: '/layout',
+              breadcrumbName: 'Layout',
+            },
+            {
+              path: '/navigation',
+              breadcrumbName: 'Navigation',
+            },
+          ],
+        },
+        {
+          path: 'second',
+          breadcrumbName: 'second',
+        },
+      ],
     };
   },
 };
 </script>
-
-<style lang="less">
-.good {
-  background: red;
-}
-</style>
