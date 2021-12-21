@@ -27,7 +27,7 @@ export default function create(options) {
     document.body.appendChild(script);
   }
 
-  const Iconfont = {
+  return {
     functional: true,
     name: 'AIconfont',
     props: Icon.props,
@@ -48,5 +48,4 @@ export default function create(options) {
       return <Icon {...iconProps}>{content}</Icon>;
     },
   };
-  return Iconfont;
 }
